@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:16:09 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 15:56:31 by ailbezer         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:35:22 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,18 @@ void	ft_check_valid_input(int argc, char *argv[])
 			ft_free_all(NULL, "");
 		while (argv[i][j])
 		{
-			if (((!ft_isdigit(argv[i][j]) && (argv[i][j] != ' ')
-			 && (argv[i][j] != '-' && argv[i][j] != '+'))
+			if ((!(ft_isdigit(argv[i][j])) && (argv[i][j] != ' ')
+			 && (argv[i][j] != '-' && argv[i][j] != '+' && argv[i][j] != ' '))
 			 || (argv[i][j] == '-' && argv[i][j + 1] == '\0')
 			 || (argv[i][j] == '-' && argv[i][j + 1] == ' ')
 			 || (argv[i][j] == '+' && argv[i][j + 1] == ' ')
-			 || (argv[i][j] == '+' && argv[i][j + 1] == '\0')))
+			 || (argv[i][j] == '+' && argv[i][j + 1] == '\0'))
 			 	ft_free_all(NULL, "Error\n");
 			j++;
 		}
 	}
 }
+
 void	ft_check_duplicate_or_sort(t_stack *s)
 {
 	int	i;

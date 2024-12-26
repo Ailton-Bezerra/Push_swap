@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 04:02:28 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 16:11:45 by ailbezer         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:24:29 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,35 @@ void	ft_sort_ffive(t_stack *s)
 	ft_push("pa", s);
 }
 
-// void ft_radix(t_stack *s)
-// {
-	
-// }
+void ft_radix(t_stack *s)
+{
+	int i;
+	int size;
+	int	bsize;
+
+	i = -1;
+	while (++i < s->size_a)
+	{
+		size = s->size_a;
+		while (size-- && !ft_issort(s))
+		{
+			if (((s->stack_a[0] >> i) & 1) == 0)
+				ft_push("pb", s);
+			else
+				ft_rotate(s->stack_a, s->size_a, "up", "a");
+		}
+		bsize = s->size_b;
+		while (bsize-- && (i + 1) <= s->bit_size && !ft_issort(s))
+		{
+			if (((s->stack_b[0] >> i) & 1) == 0)
+				ft_rotate(s->stack_b, s->size_b, "up", "b");
+			else
+				ft_push("pa", s);
+		} 	
+		if (ft_issort(s))
+			while(s->size_b)
+				ft_push("pa", s);
+	}
+	while(s->size_b)
+		ft_push("pa", s);
+}
