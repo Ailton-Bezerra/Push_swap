@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks.c                                           :+:      :+:    :+:   */
+/*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:12:41 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 12:18:01 by ailbezer         ###   ########.fr       */
+/*   Updated: 2024/12/26 17:23:46 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_concat(int argc, char *argv[], t_stack *s)
+static void	ft_concat(int argc, char *argv[], t_stack *s)
 {
 	int		i;
 	char	*tmp;
@@ -40,31 +40,8 @@ void	ft_concat(int argc, char *argv[], t_stack *s)
 		free(tmp);
 }
 
-void	ft_initialize_struct(t_stack *s, int argc, char *argv[])
-{
-	int	i;
 
-	i = 0;
-	s->size_a = 0;
-	s->size_a = 0;
-
-	while (argc--)
-	{
-		if(ft_count_wd(argv[i + 1], ' '))
-			s->size_a += ft_count_wd(argv[i + 1], ' ');
-		else
-			s->size_a += 1;
-		i++;
-	}
-	s->stack_a = malloc (s->size_a * sizeof * s->stack_a);
-	if (!s->stack_a)
-		ft_free_all(s, "Error\n");
-	s->stack_b = malloc (s->size_a * sizeof * s->stack_b);
-	if (!s->stack_b)
-		ft_free_all(s, "Error\n");	
-}
-
-void	ft_creat_stacka(t_stack *s)
+static void	ft_creat_stacka(t_stack *s)
 {
 	int		i;
 	int		j;
@@ -79,4 +56,46 @@ void	ft_creat_stacka(t_stack *s)
 		free(tmp[i - 1]);
 	}
 	free(tmp);
+}
+
+static void ft_bitsize(t_stack *s)
+{
+	int	i;
+
+	i = s->size_a;
+	s->bit_size = 0;
+	while (i >= 1)
+	{
+		s->bit_size += 1;
+		i /= 2;
+	}
+	// ft_printf("%d", s->bit_size);
+}
+
+void	ft_initialize_struct(t_stack *s, int argc, char *argv[])
+{
+	int	i;
+	int count;
+
+	i = 0;
+	count = argc;
+	s->size_a = 0;
+	s->size_a = 0;
+	while (--count)
+	{
+		if(ft_count_wd(argv[i + 1], ' '))
+			s->size_a += ft_count_wd(argv[i + 1], ' ');
+		else
+			s->size_a += 1;
+		i++;
+	}
+	s->stack_a = malloc (s->size_a * sizeof * s->stack_a);
+	if (!s->stack_a)
+		ft_free_all(s, "Error\n");
+	s->stack_b = malloc (s->size_a * sizeof * s->stack_b);
+	if (!s->stack_b)
+		ft_free_all(s, "Error\n");
+	ft_concat(argc, argv, s);
+	ft_creat_stacka(s);
+	ft_bitsize(s);
 }

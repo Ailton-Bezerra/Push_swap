@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:49:57 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 12:27:51 by ailbezer         ###   ########.fr       */
+/*   Updated: 2024/12/26 14:27:37 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_swap(char *str, int *array, int size)
 	tmp = array[0];
 	array[0] = array[1]; 
 	array[1] = tmp;
-	ft_putendl(str, 1);
+	ft_putendl_fd(str, 1);
 }
 
 void	ft_push(char *str, t_stack *s)
@@ -34,7 +34,7 @@ void	ft_push(char *str, t_stack *s)
 			return ;
 		tmp = s->stack_b[0];
 		ft_memmove(s->stack_a + 1, s->stack_a, sizeof(int) * s->size_a);
-		s->stack_a[0] == tmp;
+		s->stack_a[0] = tmp;
 		s->size_b--;
 		ft_memmove(s->stack_b, s->stack_b + 1, sizeof(int) * s->size_b);
 		s->size_a++;
@@ -45,7 +45,7 @@ void	ft_push(char *str, t_stack *s)
 			return ;
 		tmp = s->stack_a[0];
 		ft_memmove(s->stack_b + 1, s->stack_b, sizeof(int) * s->size_b);
-		s->stack_b[0] == tmp;
+		s->stack_b[0] = tmp;
 		s->size_a--;
 		ft_memmove(s->stack_a, s->stack_a + 1, sizeof(int) * s->size_a);
 		s->size_b++;
@@ -53,7 +53,7 @@ void	ft_push(char *str, t_stack *s)
 	ft_putendl_fd(str, 1);
 }
 
-void	ft_rotate(int *array, int size, char *direction, char *list)
+void	ft_rotate(int *array, int size, char *direction, char *stack)
 {
 	int	tmp;
 
@@ -73,5 +73,5 @@ void	ft_rotate(int *array, int size, char *direction, char *list)
 		array[0] = tmp;
 		write(1, "rr", 2);
 	}
-	ft_putendl_fd(list, 1);
+	ft_putendl_fd(stack, 1);
 }

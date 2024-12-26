@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:16:09 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 12:18:07 by ailbezer         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:56:31 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_free_all(t_stack *s, char *msg)
 	exit(1);
 }
 
-void		ft_check_valid_input(int argc, char *argv[])
+void	ft_check_valid_input(int argc, char *argv[])
 {
 	int		i;
 	int		j;
@@ -40,7 +40,7 @@ void		ft_check_valid_input(int argc, char *argv[])
 	while (++i < argc)
 	{
 		j = 0;
-		if (!argv[i][0] || (argv[i][0] && argv[i][0] == ' '))
+		if (!argv[i][0] || argv[i][0] == ' ')
 			ft_free_all(NULL, "");
 		while (argv[i][j])
 		{
@@ -55,13 +55,13 @@ void		ft_check_valid_input(int argc, char *argv[])
 		}
 	}
 }
-void	ft_check_duplicate(t_stack *s)
+void	ft_check_duplicate_or_sort(t_stack *s)
 {
 	int	i;
 	int j;
 
-	i = 0;
-	while(i < s->size_a)
+	i = -1;
+	while(++i < s->size_a)
 	{
 		j = i + 1;
 		while (j < s->size_a)
@@ -70,6 +70,7 @@ void	ft_check_duplicate(t_stack *s)
 				ft_free_all(s, "Error\n");
 			j++;
 		}
-		i++;
 	}
+	if (ft_issort(s))
+		ft_free_all(s,"");
 }
