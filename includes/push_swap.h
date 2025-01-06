@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:43:45 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 16:43:15 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:19:42 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 # define PUSH_SWAP_H
 
 #include <stdlib.h>
-#include "libft.h"
-#include "ft_printf.h"
+#include <limits.h>
+#include "../libft/libft.h"
+#include "../printf/ft_printf.h"
 
 typedef struct s_stack
 {
 	int		*stack_a;
 	int		*stack_b;
+	int		*pos_a;
+	int		*pos_b;
+	int		*cost_a;
+	int		*cost_b;
 	int		size_a;
 	int		size_b;
-	int		bit_size;
 	char	*concat;
 }			t_stack;
 
@@ -45,9 +49,22 @@ void	ft_swap(char *str, int *array, int size);
 void	ft_rotate(int *array, int size, char *direction, char *list);
 
 /* ============= sort ============= */
-void	ft_radix(t_stack *s);
+// void	ft_radix(t_stack *s);
+void	ft_sort(t_stack *s);
 int		ft_issort(t_stack *s);
 void	ft_sort_three(t_stack *s);
 void	ft_sort_ffive(t_stack *s);
+
+/* ============= position ============= */
+void	ft_get_target_pos(t_stack *s);
+int		ft_get_lowest_pos(int *stack, int stack_size);
+int		ft_get_target(int *stack_a, int size_a, int idx_b);
+
+/* ============= cost ============= */
+void	ft_get_cost(t_stack *s);
+void	ft_cheapest_move(t_stack *s);
+
+/* ============= do_move ============= */
+void ft_domove(t_stack *s, int cost_a, int cost_b);
 
 #endif

@@ -1,6 +1,7 @@
 NAME		= push_swap
 SRCS		= main.c ./srcs/utils.c ./srcs/sort.c \
-			 ./srcs/move.c ./srcs/check_error.c ./srcs/struct.c
+			 ./srcs/move.c ./srcs/check_error.c ./srcs/struct.c \
+			 ./srcs/position.c  ./srcs/cost.c ./srcs/do_move.c
 OBJS		:= $(SRCS:%.c=%.o)
 CC			= cc
 CFLAGS 		= -Wall -Wextra -Werror -g3

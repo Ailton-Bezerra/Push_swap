@@ -6,11 +6,11 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:48:50 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 18:28:45 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:27:16 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./includes/push_swap.h"
 
 int	main(int argc, char *argv[])
 {
@@ -18,14 +18,15 @@ int	main(int argc, char *argv[])
 	
 	ft_check_valid_input(argc, argv);
 	stacks = malloc(sizeof(t_stack));
-		if (!stacks)
-			ft_free_all(NULL, "Error\n");
+	if (!stacks)
+		ft_free_all(NULL, "Error\n");
 	ft_initialize_struct(stacks, argc, argv);
 	// ft_printf("%s, %s, %d, %d\n", stacks->stack_a, stacks->stack_b, stacks->size_a, stacks->size_a);
 	// ft_printf("%s\n", stacks->concat);
 	// int i = 0;
 	// while(i < stacks->size_a)
 	// 	ft_printf("%d\n", stacks->stack_a[i++]);
+	// ft_printf("%d", stacks->size_a);
 	ft_check_duplicate_or_sort(stacks);
 	ft_creat_index(stacks);
 	// i = 0;
@@ -41,8 +42,10 @@ int	main(int argc, char *argv[])
 	// while(i < stacks->size_a)
 	// 	ft_printf("%d\n", stacks->stack_a[i++]);
 	else
-		ft_radix(stacks);
-		
+	{
+		ft_sort(stacks);
+		// ft_radix(stacks);
+	}
 	// ft_free_all(stacks,"Error");
 	return (0);
 }

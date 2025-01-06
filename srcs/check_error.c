@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:16:09 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 18:35:22 by ailbezer         ###   ########.fr       */
+/*   Updated: 2024/12/27 16:14:17 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,15 @@ void	ft_check_valid_input(int argc, char *argv[])
 	while (++i < argc)
 	{
 		j = 0;
-		if (!argv[i][0] || argv[i][0] == ' ')
-			ft_free_all(NULL, "");
 		while (argv[i][j])
 		{
 			if ((!(ft_isdigit(argv[i][j])) && (argv[i][j] != ' ')
-			 && (argv[i][j] != '-' && argv[i][j] != '+' && argv[i][j] != ' '))
-			 || (argv[i][j] == '-' && argv[i][j + 1] == '\0')
-			 || (argv[i][j] == '-' && argv[i][j + 1] == ' ')
-			 || (argv[i][j] == '+' && argv[i][j + 1] == ' ')
-			 || (argv[i][j] == '+' && argv[i][j + 1] == '\0'))
-			 	ft_free_all(NULL, "Error\n");
+				&& (argv[i][j] != '-' && argv[i][j] != '+'))
+				|| (argv[i][j] == '-' && argv[i][j + 1] == '\0')
+				|| (argv[i][j] == '+' && argv[i][j + 1] == '\0')
+				|| (argv[i][j] == '-' && argv[i][j + 1] == ' ')
+				|| (argv[i][j] == '+' && argv[i][j + 1] == ' '))
+					ft_free_all(NULL, "Error\n");
 			j++;
 		}
 	}

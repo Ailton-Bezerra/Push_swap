@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:49:57 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 14:27:37 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:37:53 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void	ft_rotate(int *array, int size, char *direction, char *stack)
 		array[0] = tmp;
 		write(1, "rr", 2);
 	}
-	ft_putendl_fd(stack, 1);
+	if (stack)
+		ft_putendl_fd(stack, 1);
 }

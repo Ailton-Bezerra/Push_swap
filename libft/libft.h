@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ailbezer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 10:29:09 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/10/05 10:29:12 by ailbezer         ###   ########.fr       */
+/*   Updated: 2024/12/30 17:25:18 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+int		ft_abs(int n);
 
 int		ft_isascii(int c);
 int		ft_isalpha(int c);

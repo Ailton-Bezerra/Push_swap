@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:12:41 by ailbezer          #+#    #+#             */
-/*   Updated: 2024/12/26 17:23:46 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:49:39 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void	ft_concat(int argc, char *argv[], t_stack *s)
 		free(tmp);
 }
 
-
 static void	ft_creat_stacka(t_stack *s)
 {
 	int		i;
@@ -58,18 +57,20 @@ static void	ft_creat_stacka(t_stack *s)
 	free(tmp);
 }
 
-static void ft_bitsize(t_stack *s)
+static void ft_init_pos(t_stack *s)
 {
-	int	i;
-
-	i = s->size_a;
-	s->bit_size = 0;
-	while (i >= 1)
-	{
-		s->bit_size += 1;
-		i /= 2;
-	}
-	// ft_printf("%d", s->bit_size);
+	s->pos_a = malloc(s->size_a * sizeof(s->pos_a));
+	if(!s->pos_a)
+		ft_free_all(s, "Error\n");
+	s->pos_b = malloc(s->size_a * sizeof(s->pos_b));
+	if(!s->pos_b)
+		ft_free_all(s, "Error\n");
+	s->cost_a = malloc(s->size_a * sizeof(s->cost_a));
+	if(!s->cost_a)
+		ft_free_all(s, "Error\n");
+	s->cost_b = malloc(s->size_a * sizeof(s->cost_b));
+	if(!s->cost_b)
+		ft_free_all(s, "Error\n");
 }
 
 void	ft_initialize_struct(t_stack *s, int argc, char *argv[])
@@ -95,7 +96,7 @@ void	ft_initialize_struct(t_stack *s, int argc, char *argv[])
 	s->stack_b = malloc (s->size_a * sizeof * s->stack_b);
 	if (!s->stack_b)
 		ft_free_all(s, "Error\n");
+	ft_init_pos(s);
 	ft_concat(argc, argv, s);
 	ft_creat_stacka(s);
-	ft_bitsize(s);
 }
