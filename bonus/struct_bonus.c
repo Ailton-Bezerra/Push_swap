@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.c                                           :+:      :+:    :+:   */
+/*   struct_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:25:44 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/10 17:53:50 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:04:22 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
 static t_stack	*new_node(int value)
 {
@@ -21,10 +21,6 @@ static t_stack	*new_node(int value)
 		return (NULL);
 	new->value = value;
 	new->index = 0;
-	new->pos = -1;
-	new->target_pos = -1;
-	new->cost_a = -1;
-	new->cost_a = -1;
 	new->next = NULL;
 	return (new);
 }
