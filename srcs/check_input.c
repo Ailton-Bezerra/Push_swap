@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:29:11 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/13 15:50:50 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:04:51 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ char	**check_and_valid_input(int argc, char *argv[])
 	i = 0;
 	while (++i < argc)
 	{
-		j = 0;
-		if (ft_strncmp(argv[i], "", 1) == 0 || ft_strncmp(argv[i], "\t", 1))
+		j = -1;
+		if (ft_strncmp(argv[i], "", 1) == 0
+			|| (ft_strncmp(argv[i], " ", 1) == 0))
 			free_and_exit(NULL, NULL, "Error", 1);
-		while (argv[i][j])
+		while (argv[i][++j])
 		{
 			if ((!(ft_isdigit(argv[i][j])) && (argv[i][j] != ' ')
 				&& (argv[i][j] != '-' && argv[i][j] != '+'))
@@ -61,7 +62,6 @@ char	**check_and_valid_input(int argc, char *argv[])
 				|| (argv[i][j] == '-' && argv[i][j + 1] == ' ')
 				|| (argv[i][j] == '+' && argv[i][j + 1] == ' '))
 				free_and_exit(NULL, NULL, "Error", 1);
-			j++;
 		}
 	}
 	concat = cat_args(argc, argv, 0);

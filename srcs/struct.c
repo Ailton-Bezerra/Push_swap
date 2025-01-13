@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:25:44 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/10 17:53:50 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:00:15 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static t_stack	*new_node(int value)
 	return (new);
 }
 
-static long	ft_atol(char *str)
+static long long	ft_atoll(char *str)
 {
-	int		i;
-	int		signal;
-	long	nb;
+	int			i;
+	int			signal;
+	long long	nb;
 
 	i = 0;
 	signal = 1;
@@ -52,16 +52,16 @@ static long	ft_atol(char *str)
 
 t_stack	*fill_stacka(int args_c, char **args)
 {
-	int		i;
-	long	nb;
-	t_stack	*stack_a;
+	int			i;
+	long long	nb;
+	t_stack		*stack_a;
 
 	i = -1;
 	stack_a = NULL;
 	nb = 0;
 	while (++i < args_c)
 	{
-		nb = ft_atol(args[i]);
+		nb = ft_atoll(args[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			free_and_exit(&stack_a, NULL, "Error", 1);
 		if (i == 0)
