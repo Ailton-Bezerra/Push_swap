@@ -1,4 +1,5 @@
 NAME		= push_swap
+NAME_BONUS  = checker
 SRCS		= main.c ./srcs/check_input.c ./srcs/handle_errors.c ./srcs/stack.c \
 			./srcs/struct.c ./srcs/sort.c ./srcs/position.c ./srcs/cost.c \
 			./moves/push.c ./moves/swap.c ./moves/rotates.c ./moves/do_move.c
@@ -22,8 +23,10 @@ all: libft ${NAME}
 libft:
 	@make -s -C ./libft ${NO_PRINT}
 
-bonus: ${OBJS_BONUS} libft
-	@${CC} ${CFLAGS} ${OBJS_BONUS} -Llibft -lft -o checker
+bonus: libft ${NAME_BONUS}
+
+${NAME_BONUS}: ${OBJS_BONUS}
+	@${CC} ${CFLAGS} ${OBJS_BONUS} -Llibft -lft -o ${NAME_BONUS}
 	@echo "$(GREEN)Done!$(END)"
 
 ${NAME}: ${OBJS}
@@ -31,7 +34,7 @@ ${NAME}: ${OBJS}
 	@echo "$(GREEN)Done!$(END)"
 
 %.o: %.c
-	@${CC} ${CFLAGS} ${DIR_HEADER} ${DIR_LIBFT} -c $< -o $@
+	@${CC} ${CFLAGS} ${DIR_HEADER} ${DIR_LIBFT} -c $? -o $@
 
 clean:
 	@make clean -C ./libft ${NO_PRINT}
@@ -39,7 +42,7 @@ clean:
 	@echo -n "$(GREEN)Cleaned$(END)"
 
 fclean: clean
-	@${RM} ${NAME} checker
+	@${RM} ${NAME} ${NAME_BONUS}
 	@make fclean -C ./libft ${NO_PRINT}
 	@echo "$(GREEN) all!$(END)"
 

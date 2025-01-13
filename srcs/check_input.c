@@ -6,7 +6,7 @@
 /*   By: ailbezer <ailbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:29:11 by ailbezer          #+#    #+#             */
-/*   Updated: 2025/01/10 17:49:59 by ailbezer         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:50:50 by ailbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**check_and_valid_input(int argc, char *argv[])
 	while (++i < argc)
 	{
 		j = 0;
-		if (ft_strncmp(argv[i], "", 1) == 0)
+		if (ft_strncmp(argv[i], "", 1) == 0 || ft_strncmp(argv[i], "\t", 1))
 			free_and_exit(NULL, NULL, "Error", 1);
 		while (argv[i][j])
 		{
