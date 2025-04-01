@@ -1,10 +1,8 @@
 <p align="center">
   <img src="https://github.com/Ailton-Bezerra/Ailton-Bezerra/blob/main/badges/push_swapm.png" alt="Push_swap 42 project badge"/>
 <p align="center">
-  <p align="center">
-  <strong>125/100</strong> 🌟
-</p>
-
+$${\color{lightgreen}125/100}$$ 🌟
+  
 ## Description
 `Push_swap` program sorts a list of integers using a set of predefined stack operations.
 - Duplicates and non-numeric inputs will cause an error.
